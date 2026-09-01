@@ -1,0 +1,31 @@
+{
+  "name": "qraft-3d-ai-editor",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "workspaces": [
+    "client",
+    "server"
+  ],
+  "scripts": {
+    "dev": "concurrently -k -n client,server -c cyan,magenta \"npm run dev -w client\" \"npm run dev -w server\"",
+    "start": "node server/dist/index.js",
+    "build": "npm run build -w client && npm run build -w server",
+    "test": "npm run test -w client && npm run test -w server",
+    "test:e2e": "playwright test",
+    "typecheck": "npm run typecheck -w client && npm run typecheck -w server",
+    "lint": "eslint .",
+    "format": "prettier --write .",
+    "format:check": "prettier --check ."
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@playwright/test": "^1.62.1",
+    "concurrently": "^9.1.2",
+    "eslint": "^10.9.1",
+    "eslint-plugin-react-hooks": "^7.1.1",
+    "globals": "^17.12.0",
+    "prettier": "^3.9.6",
+    "typescript-eslint": "^8.69.0"
+  }
+}

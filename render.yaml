@@ -1,0 +1,39 @@
+services:
+  - type: web
+    name: qraft-3d-editor
+    runtime: node
+    plan: free
+    buildCommand: npm ci && npm run build
+    startCommand: npm run start
+    healthCheckPath: /api/health
+    envVars:
+      - key: NODE_VERSION
+        value: 22
+      - key: NODE_ENV
+        value: production
+      - key: OPENAI_MODEL
+        value: gpt-4o-mini
+      - key: OPENAI_TRANSCRIBE_MODEL
+        value: gpt-4o-mini-transcribe
+      - key: OPENAI_API_KEY
+        sync: false
+      - key: SUPABASE_URL
+        sync: false
+      - key: SUPABASE_SERVICE_ROLE_KEY
+        sync: false
+      - key: VITE_SUPABASE_URL
+        sync: false
+      - key: VITE_SUPABASE_ANON_KEY
+        sync: false
+      - key: ALLOWED_ORIGINS
+        sync: false
+      - key: AI_RATE_LIMIT_PER_MINUTE
+        value: 20
+      - key: AI_DAILY_TEXT_LIMIT
+        value: 50
+      - key: AI_DAILY_IMAGE_LIMIT
+        value: 10
+      - key: AI_DAILY_VOICE_LIMIT
+        value: 20
+      - key: AI_GLOBAL_DAILY_LIMIT
+        value: 1000
